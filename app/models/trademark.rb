@@ -1,0 +1,2 @@
+class Trademark < ApplicationRecord
+end
