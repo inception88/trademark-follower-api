@@ -5,5 +5,3 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Trademark.create(title: "EnterAction Apparel", serial: 123455678)
-Trademark.create(title: "U'SPINN", serial: 12346587)
