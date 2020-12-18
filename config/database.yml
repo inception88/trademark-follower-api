@@ -62,8 +62,8 @@ test:
 
 production:
   host: <%= ENV['Heroku_Host'] %>
-  url: <%= ENV['Heroku_URL'] %>
-  database: <%= ENV['DATABASE_URL'] %>
+  url: <%= ENV['DATABASE_URL'] %>
+  database: <%= ENV['Heroku_Database'] %>
   username: <%= ENV['Heroku_User'] %>
   password: <%= ENV['Heroku_Password'] %>
 
