@@ -54,11 +54,16 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: trademark-follower-api
+  database: trademark-follower-api-test
   pool: 5
   username: 
   password:
   timeout: 5000
 
 production:
-   url: <%= ENV['DATABASE_URL'] %>
+  host: <%= ENV['Heroku_Host'] %>
+  url: <%= ENV['Heroku_URL'] %>
+  database: <%= ENV['Heroku_Databse'] %>
+  username: <%= ENV['Heroku_User'] %>
+  password: <%= ENV['Heroku_Password'] %>
+
