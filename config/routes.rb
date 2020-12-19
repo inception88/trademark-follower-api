@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :follows
   scope '/api/v1' do
     resources :users, only: [:create]
     resources :trademarks
