@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  resources :follows
   scope '/api/v1' do
-    resources :users, only: [:create]
+    resources :users, only: [:create] do
+      resources :follows
+    end
     resources :trademarks
     post "/login", to: "auth#login"
     get "/auto_login", to: "auth#auto_login"
