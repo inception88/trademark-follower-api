@@ -1,6 +1,9 @@
 class TrademarksController < ApplicationController
+  before_action :require_login
+  
     def index
-      trademarks = Trademark.order("created_at DESC")
+      @user = session_user
+      trademarks = @user.trademarks
       render json: trademarks
     end
   
