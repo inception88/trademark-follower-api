@@ -32,7 +32,7 @@ class TrademarksController < ApplicationController
       end
       if trademark.follows.length < 1
         puts trademark.follows.length
-        # trademark.destroy
+        trademark.destroy
       end
       render json: trademark
     end
