@@ -8,7 +8,17 @@ class TrademarksController < ApplicationController
     end
   
     def create
-      trademark = Trademark.create(trademark_param)
+      puts params[:serialNumber]
+      @user = session_user
+      if Trademark.find_by(serialNumber: params[:serialNumber])
+        trademark = Trademark.find_by(serialNumber: params[:serialNumber])
+      else
+        trademark = Trademark.create(trademark_param)
+      end
+      if Follow.find_by(user_id: @user.id, trademark_id: trademark.id)
+      else
+        Follow.create(user_id: @user.id, trademark_id: trademark.id)
+      end
       render json: trademark
     end
   
@@ -26,6 +36,6 @@ class TrademarksController < ApplicationController
     
     private
       def trademark_param
-        params.require(:trademark).permit(:title, :done)
+        params.require(:trademark).permit(:mark, :serialNumber)
       end
   end
