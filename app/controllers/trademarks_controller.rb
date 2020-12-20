@@ -22,20 +22,21 @@ class TrademarksController < ApplicationController
       render json: trademark
     end
   
-    def update
-      trademark = Trademark.find(params[:id])
-      trademark.update_attributes(trademark_param)
-      render json: trademark
-    end
-  
     def destroy
+      puts params
+      @user = session_user
       trademark = Trademark.find(params[:id])
-      trademark.destroy
-      head :no_content, status: :ok
+      follow = Follow.find_by(user_id: @user.id, trademark_id: trademark.id)
+      follow.destroy
+      if trademark.follows.length < 1
+        puts trademark.follows.length
+        trademark.destroy
+      end
+      render json: trademark
     end
     
     private
       def trademark_param
-        params.require(:trademark).permit(:mark, :serialNumber)
+        params.require(:trademark).permit(:id, :mark, :serialNumber)
       end
   end
