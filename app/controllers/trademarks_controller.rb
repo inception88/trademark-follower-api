@@ -27,10 +27,12 @@ class TrademarksController < ApplicationController
       @user = session_user
       trademark = Trademark.find(params[:id])
       follow = Follow.find_by(user_id: @user.id, trademark_id: trademark.id)
-      follow.destroy
+      if follow
+        follow.destroy
+      end
       if trademark.follows.length < 1
         puts trademark.follows.length
-        trademark.destroy
+        # trademark.destroy
       end
       render json: trademark
     end
