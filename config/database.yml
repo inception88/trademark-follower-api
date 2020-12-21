@@ -61,9 +61,5 @@ test:
   timeout: 5000
 
 production:
-# host: <%= ENV['Heroku_Host'] %>
   url: <%= ENV['DATABASE_URL'] %>
-#  database: <%= ENV['Heroku_Database'] %>
-#  username: <%= ENV['Heroku_User'] %>
-#  password: <%= ENV['Heroku_Password'] %>
 
